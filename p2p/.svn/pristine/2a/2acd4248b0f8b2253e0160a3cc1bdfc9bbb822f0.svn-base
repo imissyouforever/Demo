@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.p2p.debt.dao.FirstdebtMapper" >
+  <resultMap id="BaseResultMap" type="com.p2p.pojo.Firstdebt" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="debttitle" property="debttitle" jdbcType="VARCHAR" />
+    <result column="debtor" property="debtor" jdbcType="VARCHAR" />
+    <result column="lastrepaydate" property="lastrepaydate" jdbcType="DATE" />
+    <result column="nowrepaydate" property="nowrepaydate" jdbcType="DATE" />
+    <result column="nextrepaydate" property="nextrepaydate" jdbcType="DATE" />
+    <result column="totalperiods" property="totalperiods" jdbcType="VARCHAR" />
+    <result column="investmoney" property="investmoney" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="movemoney" property="movemoney" jdbcType="DECIMAL" />
+    <result column="movedate" property="movedate" jdbcType="VARCHAR" />
+    <result column="surplusmoney" property="surplusmoney" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, debttitle, debtor, lastrepaydate, nowrepaydate, nextrepaydate, totalperiods, 
+    investmoney, status, movemoney, movedate, surplusmoney
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.p2p.pojo.FirstdebtExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from firstdebt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from firstdebt
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from firstdebt
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.p2p.pojo.FirstdebtExample" >
+    delete from firstdebt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.p2p.pojo.Firstdebt" >
+    insert into firstdebt (id, debttitle, debtor, 
+      lastrepaydate, nowrepaydate, nextrepaydate, 
+      totalperiods, investmoney, status, 
+      movemoney, movedate, surplusmoney
+      )
+    values (#{id,jdbcType=VARCHAR}, #{debttitle,jdbcType=VARCHAR}, #{debtor,jdbcType=VARCHAR}, 
+      #{lastrepaydate,jdbcType=DATE}, #{nowrepaydate,jdbcType=DATE}, #{nextrepaydate,jdbcType=DATE}, 
+      #{totalperiods,jdbcType=VARCHAR}, #{investmoney,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{movemoney,jdbcType=DECIMAL}, #{movedate,jdbcType=VARCHAR}, #{surplusmoney,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.p2p.pojo.Firstdebt" >
+    insert into firstdebt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="debttitle != null" >
+        debttitle,
+      </if>
+      <if test="debtor != null" >
+        debtor,
+      </if>
+      <if test="lastrepaydate != null" >
+        lastrepaydate,
+      </if>
+      <if test="nowrepaydate != null" >
+        nowrepaydate,
+      </if>
+      <if test="nextrepaydate != null" >
+        nextrepaydate,
+      </if>
+      <if test="totalperiods != null" >
+        totalperiods,
+      </if>
+      <if test="investmoney != null" >
+        investmoney,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="movemoney != null" >
+        movemoney,
+      </if>
+      <if test="movedate != null" >
+        movedate,
+      </if>
+      <if test="surplusmoney != null" >
+        surplusmoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="debttitle != null" >
+        #{debttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="debtor != null" >
+        #{debtor,jdbcType=VARCHAR},
+      </if>
+      <if test="lastrepaydate != null" >
+        #{lastrepaydate,jdbcType=DATE},
+      </if>
+      <if test="nowrepaydate != null" >
+        #{nowrepaydate,jdbcType=DATE},
+      </if>
+      <if test="nextrepaydate != null" >
+        #{nextrepaydate,jdbcType=DATE},
+      </if>
+      <if test="totalperiods != null" >
+        #{totalperiods,jdbcType=VARCHAR},
+      </if>
+      <if test="investmoney != null" >
+        #{investmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="movemoney != null" >
+        #{movemoney,jdbcType=DECIMAL},
+      </if>
+      <if test="movedate != null" >
+        #{movedate,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusmoney != null" >
+        #{surplusmoney,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.p2p.pojo.FirstdebtExample" resultType="java.lang.Integer" >
+    select count(*) from firstdebt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update firstdebt
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.debttitle != null" >
+        debttitle = #{record.debttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.debtor != null" >
+        debtor = #{record.debtor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastrepaydate != null" >
+        lastrepaydate = #{record.lastrepaydate,jdbcType=DATE},
+      </if>
+      <if test="record.nowrepaydate != null" >
+        nowrepaydate = #{record.nowrepaydate,jdbcType=DATE},
+      </if>
+      <if test="record.nextrepaydate != null" >
+        nextrepaydate = #{record.nextrepaydate,jdbcType=DATE},
+      </if>
+      <if test="record.totalperiods != null" >
+        totalperiods = #{record.totalperiods,jdbcType=VARCHAR},
+      </if>
+      <if test="record.investmoney != null" >
+        investmoney = #{record.investmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.movemoney != null" >
+        movemoney = #{record.movemoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.movedate != null" >
+        movedate = #{record.movedate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.surplusmoney != null" >
+        surplusmoney = #{record.surplusmoney,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update firstdebt
+    set id = #{record.id,jdbcType=VARCHAR},
+      debttitle = #{record.debttitle,jdbcType=VARCHAR},
+      debtor = #{record.debtor,jdbcType=VARCHAR},
+      lastrepaydate = #{record.lastrepaydate,jdbcType=DATE},
+      nowrepaydate = #{record.nowrepaydate,jdbcType=DATE},
+      nextrepaydate = #{record.nextrepaydate,jdbcType=DATE},
+      totalperiods = #{record.totalperiods,jdbcType=VARCHAR},
+      investmoney = #{record.investmoney,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      movemoney = #{record.movemoney,jdbcType=DECIMAL},
+      movedate = #{record.movedate,jdbcType=VARCHAR},
+      surplusmoney = #{record.surplusmoney,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.p2p.pojo.Firstdebt" >
+    update firstdebt
+    <set >
+      <if test="debttitle != null" >
+        debttitle = #{debttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="debtor != null" >
+        debtor = #{debtor,jdbcType=VARCHAR},
+      </if>
+      <if test="lastrepaydate != null" >
+        lastrepaydate = #{lastrepaydate,jdbcType=DATE},
+      </if>
+      <if test="nowrepaydate != null" >
+        nowrepaydate = #{nowrepaydate,jdbcType=DATE},
+      </if>
+      <if test="nextrepaydate != null" >
+        nextrepaydate = #{nextrepaydate,jdbcType=DATE},
+      </if>
+      <if test="totalperiods != null" >
+        totalperiods = #{totalperiods,jdbcType=VARCHAR},
+      </if>
+      <if test="investmoney != null" >
+        investmoney = #{investmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="movemoney != null" >
+        movemoney = #{movemoney,jdbcType=DECIMAL},
+      </if>
+      <if test="movedate != null" >
+        movedate = #{movedate,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusmoney != null" >
+        surplusmoney = #{surplusmoney,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.p2p.pojo.Firstdebt" >
+    update firstdebt
+    set debttitle = #{debttitle,jdbcType=VARCHAR},
+      debtor = #{debtor,jdbcType=VARCHAR},
+      lastrepaydate = #{lastrepaydate,jdbcType=DATE},
+      nowrepaydate = #{nowrepaydate,jdbcType=DATE},
+      nextrepaydate = #{nextrepaydate,jdbcType=DATE},
+      totalperiods = #{totalperiods,jdbcType=VARCHAR},
+      investmoney = #{investmoney,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      movemoney = #{movemoney,jdbcType=DECIMAL},
+      movedate = #{movedate,jdbcType=VARCHAR},
+      surplusmoney = #{surplusmoney,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title></title>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/coffers.css"/>
+    <link rel="stylesheet" href="../css/xinshouyindao.css"/>
+</head>
+<body style="height: 647px; ">
+
+<div class="header">
+	<!--topbar-->
+	<div class="topbar " id="topbar">
+    	<div class="grid-1200 topbar-wrap clearfix">
+		  <!--login-->
+		  <div class="login">
+		   <div class="main">
+			  <p>咨询热线（9:00-18:00）：<span>400-88888888</span></p>
+			  <div class="help">
+				<ul>
+					<li><a href="">帮助中心</a></li>
+					<li style="background:none;"><a href="">关于我们</a></li>
+				</ul>
+				<ol>
+					<li><a href=""><img src="../image/sina.jpg" alt="" /></a></li>
+					<li><a href=""><img src="../image/weixin.jpg" alt="" /></a></li>
+					<li style="margin-right:0px;"><a href=""><img src="../image/qq.jpg" alt="" /></a></li>
+				</ol>
+			  </div>
+		   </div>
+		  </div> 
+		  <div class="clear"></div>
+       </div>
+	</div>
+	<!--topbar end-->
+	<!--main-nav-->
+	<div class="main-nav">
+	  <div class="grid-1200 nav-wrap pr clearfix">
+           <div class="head">
+			 <div class="main">
+			  <!--logo-->
+			   <div class="logo">
+				 <img src="../image/logo.jpg" alt="" />
+				 <dl>
+					<dt><a href="#">北京</a></dt>
+					<dd>
+					  <p>【默认城市】</p>
+					  <div class="city">
+						<h4>请选择城市</h4>
+						<ul>
+							<li><a href="">北京</a><a href="">上海</a><a href="">深圳</a></li>
+							<li style="border-bottom:none;"><a href="">北京</a><a href="">上海</a><a href="">深圳</a></li>
+						</ul>
+					  </div>
+					</dd>
+				 </dl>
+			   </div>
+			  <!--导航-->
+			   <div class="menu">
+				 <ul>
+					<li><a th:href="@{/index}">首页</a></li>
+					<li><a href="">我要投资</a></li>
+					<li><a th:href="@{/zhanghu_gaiyao}">我的账户</a></li>
+					<li class="hover"><a th:href="@{/xinshouxindao}">新手引导</a></li>
+					<li style="background:none;"><a href="">关于我们</a></li>
+				 </ul>
+			   </div>	  
+			 </div>
+			</div>
+	  </div>
+    </div>
+	<!--main-nav end-->
+	<!--sub-nav   如果页面项目需要二级导航 才需添加 否则此段落请删除-->
+    <div class="sub-nav">
+        <div class="grid-1200 sub-nav-wrap">
+           <img src="../image/xinshouyindao.png" alt="" />
+        </div>
+    </div>
+    <!--sub-nav-end-->
+</div>	
+
+<!--container-->
+<div class="coffer-container clearfix">
+	<div class="stage" id="stage">
+		<div class="stage-layer stage-01" style="height:647px; background:#ed6d6e; ">
+		   <img src="../image/yindao1.png" alt="" />
+		</div>
+		<div class="stage-layer stage-02" id="page2Sky" style="height: 647px; background:#f5944f;">
+		   <img src="../image/yindao2.png" alt="" />
+		</div>
+		<div class="stage-layer stage-03" style="height: 647px; background:#72c8a5;">
+		   <img src="../image/yindao3.png" alt="" />
+		</div>
+		<div class="stage-layer stage-04" style="height: 647px; background:#56a7d2;">
+		   <img src="../image/yindao4.png" alt="" />
+		</div>
+
+		<div class="stage-layer stage-07" style="height: 647px; background:#2c2c2c;">
+		       <div class="footer">
+	   <div class="main">
+	    <div class="info">
+		  <ul>
+			<li>
+				<span>友情链接：</span>
+				<a href="">和君咨询</a>
+				<a href="">乾多多</a>
+				<a href="">网贷之家</a>
+				<a href="">微财富</a>
+				<a href="">网贷世界</a>
+				<a href="">网贷大本营</a>
+				<a href="">网贷前沿</a>
+				<a href="">网贷导航</a>
+			</li>
+		  </ul>
+		</div>
+	    <div class="link">
+		   <div class="link_l">
+		       <ul>
+			   	  <li>联系我们 &nbsp;<span>400-88888888</span> &nbsp;<em>9:00-22:00</em></li>
+			   	  <li><img src="../image/link5.jpg" alt="" />京ICP备 14031237</li>
+			   </ul>
+		   </div>
+		   <div class="link_r">
+		      <dl>
+			   	  <dt><img src="../image/sina-erweima.jpg" alt="" /></dt>
+			      <dd><a class="weima_1"><img src="../image/sina1.jpg" alt="" /></a></dd>
+			   </dl>
+			   <dl>
+			   	  <dt><img src="../image/weixin-erweima.jpg" alt="" /></dt>
+			      <dd class="weima">
+                    <a class="weima_2"><img src="../image/weixin1.jpg" alt="" /></a>
+                    
+                  </dd>
+			   </dl>
+		   </div>	   
+		 </div>
+		 
+         <div class="renzheng">
+		   <p>
+		   	 <a href=""><img src="../image/link1.jpg" alt="" /></a>
+		   	 <a href=""><img src="../image/link2.jpg" alt="" /></a>
+		   	 <a href=""><img src="../image/link3.jpg" alt="" /></a>
+		   	 <a href=""><img src="../image/link4.jpg" alt="" /></a>
+		   </p>
+		 </div>
+	   </div>
+	 </div>
+<div class="erweima"> 
+   <div class="sao sao2">
+      <img src="../image/erweima-hover.png" />
+    </div>
+<div class="sao1 sao3">
+      <img src="../image/erweima-hover.png" />
+    </div>
+</div>
+
+		</div>
+	</div>
+
+	<div class="right-slider">
+		<ul>
+			<li class="slideItem current" data-target="0"></li>
+			<li class="slideItem" data-target="1"></li>
+			<li class="slideItem" data-target="2"></li>
+			<li class="slideItem" data-target="3"></li>
+			<li class="slideItem" data-target="4"></li>
+		</ul>
+		<a class="ercode-holder" id="ercodeHolder">
+          <div class="ercode"></div>
+        </a>
+		<a class="slideItem back-top" data-target="0" style="display: none"></a>
+	</div>
+
+	<!--container end-->
+</div>
+
+
+<!--footer end-->
+<script src="../js/jquery.js"></script>
+<script src="../js/proTools.js"></script>
+<script src="../js/coffers.js"></script>
+<script src="../js/jquery-extendPlugn.js"></script>
+<script src="../js/xinshouyindao.js"></script>
+
+</body>
+</html>
