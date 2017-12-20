@@ -1,0 +1,214 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>账户设置</title>
+
+    <link href="../css/reset.css" rel="stylesheet"/>
+    <link href="../css/index.css" rel="stylesheet"/>
+    <link href="../css/zhanghu.css" rel="stylesheet" />
+    <script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/zhanghu.js" type="text/javascript"></script>
+    <script src="../js/index.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function getPic(){
+            $("#codePic").attr("src","http://localhost:80/captcha?flag="+Math.random());
+        };
+    </script>
+    <script type="text/javascript">
+        function phone(){
+            var phone = $("#pid").val();
+            location="/gaiphone.do?phone="+phone;
+        }
+        //密码是否正确
+        function mima(password){
+
+            alert(password.value);
+            $.ajax({
+                url:"http://localhost:80/gaimima.action",
+                type:"get",
+                data:{"password":password.value},
+                dataType:"text",
+                success:function(data){
+                alert(data);
+                }
+            })
+        }
+        //判断密码一致
+        function mimayizhi(){
+            var password1=$("[name='password1']").val();
+            var password2=$("[name='password2']").val();
+
+            if( password1 != password2){
+                alert(password2+password1);
+                $("#ss").text("两次密码输入不一致");
+            }
+        }
+        //提交修改密码
+        function xiugai(){
+            var falg =true;
+            var password1=$("[name='password1']").val();
+            var password2=$("[name='password2']").val();
+            if(password1.trim() ==""||password1==null){
+                $("#ss").text("密码不能为空");
+                falg=false;
+            }
+            else if( password1 != password2){
+                alert(password2+password1);
+                $("#ss").text("两次密码输入不一致");
+                falg=false;
+            }
+            return falg;
+
+        }
+    </script>
+    <script type="text/javascript">
+        function bijiao(checkCode){
+            alert(checkCode);
+            $.ajax({
+                url:"http://localhost:80/api/verify.action",
+                type:"get",
+                data:{"checkCode":checkCode.value},
+                dataType:"text",
+                success:function(data){
+                    $("#yid").text(data);
+                }
+            })
+        }
+    </script>
+      </head>
+
+<body>
+<div th:include="daohang :: copy"></div>
+<!--网站框架-->
+<div class="mest_con">
+    <div class="main">
+        <div th:include="zzhanghu :: zhanghu"></div>
+        <div class="main_right fl">
+            <div class="shezhi_1 shezhi_2" id="top">
+                <div class="shezhi_title shezhi_titlemima">
+                    <h2>账户设置</h2>
+                    <dl class="zhaghu_1">
+                        <dt class="fl"><a href="#"><img src="../image/wdzh_ren.png" /></a></dt>
+                        <dd class="fl">
+                            <ul>
+                                <li>实名认证：<span th:text="${invetor.username}"></span></li>
+                                <li>身份证号：<span th:text="${invetor.idcard}"></span></li>
+                                <li>手机认证：<span th:text="${invetor.phone}"></span>[<a class="genghuan">更换手机</a>]</li>
+                                <li class="ghsj hover">
+                                    <input type="text" value="+86" class="qian"/>
+                                    <label>
+                                        <input type="text" th:value="${invetor.phone}" class="sj_1" onClick="this.value=''" id="pid"/>
+                                        <input type="button" value="更改" class="gh_1" onclick="phone()"/>
+                                    </label>
+                                </li>
+                                <li>邮箱绑定：<span th:text="${invetor.email}"></span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="clear"></div>
+                <!--登录密码修改-->
+                <div class="zj_denglu">
+                    <h2>登录密码修改</h2>
+                    <table class="zhang_biao">
+                        <form th:action="@{/xiugaimima}" method="post" onsubmit="return xiugai()">
+                        <tbody>
+                        <tr><td class="zhang_shuoming">原密码：</td><td><input type="password" name="password"  onblur="mima(this)" required="required"/><span id="sid"></span></td></tr>
+                        <tr><td class="zhang_shuoming">新密码：</td><td><input type="password" name="password1" required="required"/></td></tr>
+                        <tr><td class="zhang_shuoming">确认新密码：</td><td><input type="password" name="password2" onblur="mimayizhi()" required="required"/></td><td><span id="ss"></span></td></tr>
+                        <tr><td class="zhang_shuoming">验证码：</td><td><input type="text" class="zh_yan" onblur="bijiao(this);"/><input type="image" th:src="@{/captcha}" id="codePic"/></td><td class="zhanghu_look"><a class="blurry" id="newPic" onclick="getPic();">看不清楚，换一张</a> </td></tr>
+                        <tr><th colspan="3px"><span id="yid"></span></th></tr>
+                        <tr><td><input type="submit" src="../image/zhanghu_xiugai..jpg"/></td></tr>
+
+                        </tbody>
+                        </form>
+                    </table>
+                </div>
+                <p class="zh_bang">绑定乾多多：<a href="#">已绑定</a></p>
+                <!--乾多多授权-->
+                <div class="zj_denglu zj_denglu1">
+                    <h2>乾多多授权</h2>
+                    <ul>
+                        <li>
+                            <span>授权状态：</span>
+                            <span>投标:已授权</span>
+                            <span>还款 ：已授权</span>
+                            <span>二次分配：已授权</span>
+                        </li>
+                        <li>
+                            <span>开启授权：</span>
+                            <label><span class="">投标</span><input type="checkbox" class="zhang_check" onClick="dianji()"/></label>
+                            <label><span class="">还款</span><input type="checkbox" class="zhang_check" onClick="dianji()"/></label>
+                            <label><span class="">二次分配</span><input type="checkbox" class="zhang_check" onClick="dianji()"/></label>
+                            <a href="#" class="dianji">点击授权</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--底部-->
+<div class="footer">
+    <div class="main">
+        <div class="info">
+            <ul>
+                <li>
+                    <span>友情链接：</span>
+                    <a href="">和君咨询</a>
+                    <a href="">乾多多</a>
+                    <a href="">网贷之家</a>
+                    <a href="">微财富</a>
+                    <a href="">网贷世界</a>
+                    <a href="">网贷大本营</a>
+                    <a href="">网贷前沿</a>
+                    <a href="">网贷导航</a>
+                </li>
+            </ul>
+        </div>
+        <div class="link">
+            <div class="link_l">
+                <ul>
+                    <li>联系我们 &nbsp;<span>400-88888888</span> &nbsp;<em>9:00-22:00</em></li>
+                    <li><img src="../image/link5.jpg" alt="" />京ICP备 14031237</li>
+                </ul>
+            </div>
+            <div class="link_r">
+                <dl>
+                    <dt><img src="../image/sina-erweima.jpg" alt="" /></dt>
+                    <dd><a class="weima_1"><img src="../image/sina1.jpg" alt="" /></a></dd>
+                </dl>
+                <dl>
+                    <dt><img src="../image/weixin-erweima.jpg" alt="" /></dt>
+                    <dd class="weima">
+                        <a class="weima_2"><img src="../image/weixin1.jpg" alt="" /></a>
+
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="renzheng">
+            <p>
+                <a href=""><img src="../image/link1.jpg" alt="" /></a>
+                <a href=""><img src="../image/link2.jpg" alt="" /></a>
+                <a href=""><img src="../image/link3.jpg" alt="" /></a>
+                <a href=""><img src="../image/link4.jpg" alt="" /></a>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="erweima">
+    <div class="sao">
+        <img src="../image/erweima-hover.png" />
+    </div>
+    <div class="sao1">
+        <img src="../image/erweima-hover.png" />
+    </div>
+</div>
+</body>
+
+</html>

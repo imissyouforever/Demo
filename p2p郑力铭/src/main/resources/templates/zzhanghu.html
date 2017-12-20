@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="zhanghu">
+        <div class="wrap_left fl">
+            <dl>
+                <dt><a href="#">我的账户</a></dt>
+                <dd>
+                    <ul>
+                        <li><a href="zhanghu/zhanghu_gaiyao.html">账户概要</a></li>
+                        <li><a href="zhanghu/zhanghu_zhuangrang.html">转让记录</a></li>
+                        <li><a href="zhanghu/zhanghu_chongzhi.html">充值提现</a></li>
+                        <li><a href="zhanghu/zhanghu_zijin.html">资金流水</a></li>
+                        <li class="wdzh_bot hover"><a th:href="@{shezhi}">账户设置</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="copy">
+        <!--login-->
+        <div class="login">
+            <div class="main">
+                <p>咨询热线（9:00-18:00）：<span>400-88888888</span></p>
+                <div class="help">
+                    <ul>
+                        <li><a th:href="@{help}">帮助中心</a></li>
+                        <li style="background:none;"><a th:href="@{liangxi}">关于我们</a></li>
+                    </ul>
+                    <ol>
+                        <li><a href=""><img src="../image/sina.jpg" alt="" /></a></li>
+                        <li><a href=""><img src="../image/weixin.jpg" alt="" /></a></li>
+                        <li style="margin-right:0px;"><a href=""><img src="../image/qq.jpg" alt="" /></a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!--头部-->
+        <div class="header">
+            <div class="main">
+                <!--logo-->
+                <div class="logo">
+                    <img src="../image/logo.jpg" alt="" />
+                    <dl>
+                        <dt><a href="#">北京</a></dt>
+                        <dd>
+                            <p>【默认城市】</p>
+                            <div class="city">
+                                <h4>请选择城市</h4>
+                                <ul>
+                                    <li><a href="">北京</a><a href="">上海</a><a href="">深圳</a></li>
+                                    <li style="border-bottom:none;"><a href="">北京</a><a href="">上海</a><a href="">深圳</a></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <!--导航-->
+                <div class="menu">
+                    <ul>
+                        <li class="hover"><a th:href="@{/}">首页</a></li>
+                        <li><a th:href="@{touzi}">我要投资</a></li>
+                        <li><a th:href="@{zhanghu}">我的账户</a></li>
+                        <li><a th:href="@{yindao}">新手引导</a></li>
+                        <li style="background:none;"><a th:href="@{liangxi}">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
